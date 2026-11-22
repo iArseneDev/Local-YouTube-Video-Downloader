@@ -1,7 +1,7 @@
 {
-  "name": "Y2Matez Video Downloader",
-  "short_name": "Y2Matez",
-  "description": "Fast and free online video and audio downloader and converter.",
+  "name": "YouTube Video Downloader",
+  "short_name": "Video Downloader",
+  "description": "A locally run video downloader.",
 
   "start_url": "/",
   "display": "standalone",
