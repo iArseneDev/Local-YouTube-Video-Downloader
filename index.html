@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y2matez - Download Videos from YouTube, Vimeo, Dailymotion</title>
+    <meta name="description" content="Free online video downloader tool. Download videos from YouTube, Vimeo, Dailymotion, Facebook, and other platforms in MP4, MP3, HD quality.">
+    
+    <!-- Essential Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Y2matez">
+    <meta name="keywords" content="video downloader, YouTube downloader, download videos online, free video downloader, MP4 downloader, MP3 downloader, Vimeo downloader, Dailymotion downloader">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://y2matez.site">
+    <meta property="og:title" content="Y2matez - Free Online Video Downloader">
+    <meta property="og:description" content="Download videos from YouTube, Vimeo, Dailymotion in HD quality. Fast, free, and easy to use.">
+    <meta property="og:image" content="https://y2matez.site/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://y2matez.site">
+    <meta name="twitter:title" content="Y2matez - Free Video Downloader">
+    <meta name="twitter:description" content="Download videos from multiple platforms in MP4, MP3, HD formats.">
+    <meta name="twitter:image" content="https://y2matez.site/images/twitter-card.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://y2matez.site">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- adsterra popunder scripts -->
+    <script src="https://blubberlog.com/8d/ad/81/8dad81764747c7882c2530c64002afde.js"></script>
+    <!-- Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Y2matez Video Downloader",
+      "description": "Free online tool to download videos from various platforms",
+      "url": "https://y2matez.site/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Y2matez"
+      }
+    }
+    </script>
+    
+    <!-- Additional Meta Tags -->
+    <meta name="application-name" content="Y2matez">
+    <meta name="apple-mobile-web-app-title" content="Y2matez">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <head>
+    <!-- Other meta tags... -->
+    
+    <!-- Font Awesome CSS (ADDED THIS) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Optional: Google Fonts for Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    </head>
+    
+   <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: #667eea;
+            font-size: 24px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #667eea;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #667eea;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+        }
+        
+        /* Download Card */
+        .download-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        .card-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .service-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+        
+        .service-icons i {
+            color: #667eea;
+            transition: transform 0.3s;
+        }
+        
+        .service-icons i:hover {
+            transform: scale(1.2);
+        }
+        
+        .card-header h3 {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        /* Input Form */
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        #videoUrl {
+            flex: 1;
+            padding: 18px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+        }
+        
+        #videoUrl:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .input-hint {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px 0;
+            display: none;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Results */
+        .results {
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .video-info {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+        }
+        
+        .video-thumbnail {
+            width: 200px;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-details {
+            flex: 1;
+        }
+        
+        .video-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .video-meta {
+            display: flex;
+            gap: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .video-meta i {
+            margin-right: 5px;
+            color: #667eea;
+        }
+        
+        /* Formats Grid */
+        .formats-container h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .formats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .format-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        
+        .format-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .format-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .format-type {
+            background: #667eea;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .format-resolution {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .format-details {
+            margin-bottom: 20px;
+        }
+        
+        .format-details p {
+            margin: 8px 0;
+            color: #666;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .format-details i {
+            color: #667eea;
+            width: 16px;
+        }
+        
+        .download-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #218838 0%, #1ba97e 100%);
+            transform: translateY(-2px);
+        }
+        
+        .download-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        /* Message System */
+        .message {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .message-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+        
+        .message-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .message-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-left: 4px solid #17a2b8;
+        }
+        
+        .message-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-message {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        /* Quick Tips */
+        .quick-tips {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tip {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        
+        .tip i {
+            font-size: 20px;
+        }
+        
+        /* Features */
+        .features, .how-to, .supported {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 30px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo i {
+            font-size: 40px;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .footer-disclaimer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #bbb;
+            line-height: 1.6;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #888;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .download-card {
+                padding: 25px;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .video-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .video-thumbnail {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .video-meta {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .formats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-tips {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-download"></i>
+                <h1>Y2matez</h1>
+            </div>
+            <nav class="nav">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-to" class="nav-link">How To</a>
+                <a href="#supported" class="nav-link">Supported Sites</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Download Videos Online</h2>
+                <p class="subtitle">Fast, free, and easy video downloader for your favorite platforms</p>
+                
+                <!-- Main Download Card -->
+                <div class="download-card">
+                    <div class="card-header">
+                        <div class="service-icons">
+                            <i class="fab fa-youtube" title="YouTube"></i>
+                            <i class="fab fa-vimeo" title="Vimeo"></i>
+                            <i class="fab fa-dailymotion" title="Dailymotion"></i>
+                            <i class="fas fa-film" title="More"></i>
+                        </div>
+                        <h3>Paste Video URL</h3>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- Message Display -->
+                        <div class="message" id="message"></div>
+                        
+                        <!-- URL Input Form -->
+                        <form id="downloadForm">
+                            <div class="input-group">
+                                <input type="url" 
+                                       id="videoUrl" 
+                                       placeholder="https://youtube.com/watch?v=..." 
+                                       required
+                                       autocomplete="off"
+                                       autofocus>
+                                <button type="submit" class="btn-primary" id="submitBtn">
+                                    <i class="fas fa-search"></i> Get Video
+                                </button>
+                            </div>
+                            <div class="input-hint">
+                                <i class="fas fa-info-circle"></i>
+                                Supported: YouTube, Vimeo, Dailymotion, Facebook, Twitter
+                            </div>
+                        </form>
+                        
+                        <!-- Loading -->
+                        <div class="loading" id="loading">
+                            <div class="spinner"></div>
+                            <p>Analyzing video...</p>
+                        </div>
+                        
+                        <!-- Results -->
+                        <div class="results" id="results"></div>
+                    </div>
+                </div>
+                
+                <!-- Quick Tips -->
+                <div class="quick-tips">
+                    <div class="tip">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Safe & Secure</span>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-bolt"></i>
+                        <span>No Registration Required</span>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-infinity"></i>
+                        <span>Unlimited Downloads</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Y2matez?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Download videos at maximum speed with our optimized servers.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on all devices - desktop, tablet, and mobile.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>We don't store your data or videos. Your privacy matters.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Multiple Formats</h3>
+                    <p>Download in MP4, WebM, 3GP, or extract audio as MP3.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How To Section -->
+    <section class="how-to" id="how-to">
+        <div class="container">
+            <h2 class="section-title">How To Download</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Copy Video URL</h3>
+                    <p>Go to YouTube, Vimeo, or any supported site and copy the video URL from your browser.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Paste & Analyze</h3>
+                    <p>Paste the URL in the box above and click "Get Video" to analyze.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Choose Format & Download</h3>
+                    <p>Select your preferred quality/format and click download.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Sites -->
+    <section class="supported" id="supported">
+        <div class="container">
+            <h2 class="section-title">Supported Platforms</h2>
+            <div class="platforms">
+                <div class="platform">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </div>
+                <div class="platform">
+                    <i class="fab fa-vimeo"></i>
+                    <span>Vimeo</span>
+                </div>
+                <div class="platform">
+                    <i class="fab fa-dailymotion"></i>
+                    <span>Dailymotion</span>
+                </div>
+                <div class="platform">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </div>
+                <div class="platform">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </div>
+                <div class="platform">
+                    <i class="fas fa-plus"></i>
+                    <span>And More</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-download"></i>
+                    <h3>Y2matez</h3>
+                    <p>Free Online Video Downloader</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#privacy" class="footer-link">Privacy Policy</a>
+                    <a href="#terms" class="footer-link">Terms of Service</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                    <a href="#faq" class="footer-link">FAQ</a>
+                </div>
+                <div class="footer-disclaimer">
+                    <p><i class="fas fa-exclamation-triangle"></i> Disclaimer: Only download videos you have permission to download or that are in the public domain.</p>
+                    <p class="copyright">© 2024 Y2matez. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/src/assets/js/utils.js"></script>
+    <script src="/src/assets/js/api.js"></script>
+    <script src="/src/assets/js/ui.js"></script>
+    <script src="/src/assets/js/app.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // API Configuration
+        const API_BASE = 'https://vidgrabber-downloader.up.railway.app'; 
+        
+        // State Management
+        let currentVideoUrl = '';
+        let currentVideoInfo = null;
+        
+        // DOM Elements
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.querySelector('.nav');
+        const downloadForm = document.getElementById('downloadForm');
+        const videoUrlInput = document.getElementById('videoUrl');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingDiv = document.getElementById('loading');
+        const resultsDiv = document.getElementById('results');
+        const messageDiv = document.getElementById('message');
+        
+        // Mobile Menu Toggle
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                menuToggle.innerHTML = nav.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+        }
+        
+        // Form Submission
+        if (downloadForm) {
+            downloadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const url = videoUrlInput.value.trim();
+                if (!url) {
+                    showMessage('Please enter a video URL', 'error');
+                    return;
+                }
+                
+                // Basic URL validation
+                if (!url.startsWith('http')) {
+                    showMessage('Please enter a valid URL starting with http:// or https://', 'error');
+                    return;
+                }
+                
+                currentVideoUrl = url;
+                await fetchVideoInfo(url);
+            });
+        }
+        
+        // Fetch Video Information
+        async function fetchVideoInfo(url) {
+            try {
+                // Show loading
+                setLoading(true);
+                clearResults();
+                showMessage('Fetching video information...', 'info');
+                
+                // Call API
+                const response = await fetch(`${API_BASE}/api/info?url=${encodeURIComponent(url)}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    currentVideoInfo = data;
+                    displayVideoInfo(data);
+                    showMessage(`Found ${data.formats.length} formats for "${data.title}"`, 'success');
+                } else {
+                    showMessage(data.error || 'Failed to get video information', 'error');
+                    currentVideoInfo = null;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('Network error. Please check your connection and try again.', 'error');
+                currentVideoInfo = null;
+            } finally {
+                setLoading(false);
+            }
+        }
+        
+        // Display Video Information
+        function displayVideoInfo(data) {
+            if (!data.formats || data.formats.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="no-formats">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>No downloadable formats found for this video.</p>
+                    </div>
+                `;
+                resultsDiv.style.display = 'block';
+                return;
+            }
+            
+            // Create video info section
+            let html = `
+                <div class="video-info">
+                    <div class="video-thumbnail">
+                        <img src="${data.thumbnail || 'https://via.placeholder.com/200x120/667eea/ffffff?text=No+Thumbnail'}" 
+                             alt="${data.title || 'Video thumbnail'}"
+                             onerror="this.src='https://via.placeholder.com/200x120/667eea/ffffff?text=No+Thumbnail'">
+                    </div>
+                    <div class="video-details">
+                        <h3 class="video-title">${data.title || 'Untitled Video'}</h3>
+                        <div class="video-meta">
+                            ${data.duration ? `<div><i class="far fa-clock"></i> ${formatDuration(data.duration)}</div>` : ''}
+                            ${data.uploader ? `<div><i class="fas fa-user"></i> ${data.uploader}</div>` : ''}
+                        </div>
+                    </div>
+                </div>
+                <div class="formats-container">
+                    <h4>Available Formats:</h4>
+                    <div class="formats-grid">
+            `;
+            
+            // Add format cards
+            data.formats.forEach(format => {
+                const isCombined = format.has_video && format.has_audio;
+                const typeBadge = isCombined ? 'Video+Audio' : format.has_video ? 'Video Only' : 'Audio Only';
+                
+                html += `
+                    <div class="format-card">
+                        <div class="format-header">
+                            <span class="format-type">${format.ext.toUpperCase()}</span>
+                            <span class="format-resolution">${format.resolution || 'N/A'}</span>
+                        </div>
+                        <div class="format-details">
+                            <p><i class="fas fa-tag"></i> ${format.format_note || 'Standard Quality'}</p>
+                            <p><i class="fas fa-hdd"></i> ${format.filesize || 'Unknown size'}</p>
+                            <p><i class="fas fa-file"></i> ${typeBadge}</p>
+                            ${format.vcodec ? `<p><i class="fas fa-video"></i> ${format.vcodec}</p>` : ''}
+                            ${format.acodec ? `<p><i class="fas fa-volume-up"></i> ${format.acodec}</p>` : ''}
+                        </div>
+                        <button class="download-btn" onclick="downloadFormat('${format.format_id}')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                </div>
+            `;
+            
+            resultsDiv.innerHTML = html;
+            resultsDiv.style.display = 'block';
+            
+            // Smooth scroll to results
+            setTimeout(() => {
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        }
+        
+        // Download Format
+        async function downloadFormat(formatId) {
+            if (!currentVideoUrl || !currentVideoInfo) {
+                showMessage('Please analyze a video first', 'error');
+                return;
+            }
+            
+            const button = event.target.tagName === 'I' ? event.target.parentElement : event.target;
+            const originalText = button.innerHTML;
+            
+            try {
+                // Show processing
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                button.disabled = true;
+                
+                showMessage('Getting download link...', 'info');
+                
+                // Get download link from API
+                const response = await fetch(`${API_BASE}/api/download`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        url: currentVideoUrl,
+                        format: formatId
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success && data.download_url) {
+                    const downloadUrl = data.download_url;
+                    
+                    // Check if it's a direct Google video URL
+                    if (downloadUrl.includes('googlevideo.com/videoplayback')) {
+                        // Open in new tab - this bypasses CORS
+                        showMessage('Opening download in new tab...', 'success');
+                        
+                        const newTab = window.open(downloadUrl, '_blank');
+                        
+                        if (!newTab || newTab.closed) {
+                            // If popup blocked, show direct link
+                            showMessage(`
+                                <div class="message-content">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span>Popup blocked! 
+                                        <a href="${downloadUrl}" target="_blank" style="color: inherit; text-decoration: underline; font-weight: bold;">
+                                            Click here to download
+                                        </a>
+                                    </span>
+                                </div>
+                            `, 'info');
+                        }
+                    } else if (downloadUrl.includes('manifest.googlevideo.com')) {
+                        // Manifest URL - use form submission
+                        showMessage('Preparing download via proxy...', 'info');
+                        
+                        // Create and submit form to proxy endpoint
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = `${API_BASE}/api/download-form`;
+                        form.target = '_blank';
+                        
+                        const urlInput = document.createElement('input');
+                        urlInput.type = 'hidden';
+                        urlInput.name = 'url';
+                        urlInput.value = currentVideoUrl;
+                        
+                        const formatInput = document.createElement('input');
+                        formatInput.type = 'hidden';
+                        formatInput.name = 'format';
+                        formatInput.value = formatId;
+                        
+                        form.appendChild(urlInput);
+                        form.appendChild(formatInput);
+                        document.body.appendChild(form);
+                        form.submit();
+                        document.body.removeChild(form);
+                        
+                    } else {
+                        // Other direct URL
+                        showMessage('Starting download...', 'success');
+                        window.open(downloadUrl, '_blank');
+                    }
+                    
+                    // Auto-clear success message
+                    setTimeout(() => {
+                        clearMessage();
+                    }, 3000);
+                    
+                } else {
+                    showMessage(data.error || 'Failed to get download link', 'error');
+                }
+                
+            } catch (error) {
+                console.error('Download error:', error);
+                showMessage('Network error during download', 'error');
+            } finally {
+                // Restore button
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }
+        }
+        
+        // Utility Functions
+        function setLoading(isLoading) {
+            loadingDiv.style.display = isLoading ? 'block' : 'none';
+            submitBtn.disabled = isLoading;
+            submitBtn.innerHTML = isLoading 
+                ? '<i class="fas fa-spinner fa-spin"></i> Processing...' 
+                : '<i class="fas fa-search"></i> Get Video';
+        }
+        
+        function clearResults() {
+            resultsDiv.innerHTML = '';
+            resultsDiv.style.display = 'none';
+        }
+        
+        function showMessage(text, type = 'info') {
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <i class="fas fa-${getMessageIcon(type)}"></i>
+                    <span>${text}</span>
+                </div>
+                <button class="close-message" onclick="clearMessage()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            messageDiv.className = `message message-${type}`;
+            messageDiv.style.display = 'flex';
+        }
+        
+        function getMessageIcon(type) {
+            switch(type) {
+                case 'success': return 'check-circle';
+                case 'error': return 'exclamation-circle';
+                case 'info': return 'info-circle';
+                default: return 'info-circle';
+            }
+        }
+        
+        function clearMessage() {
+            messageDiv.style.display = 'none';
+            messageDiv.innerHTML = '';
+        }
+        
+        function formatDuration(seconds) {
+            if (!seconds) return '0:00';
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            
+            if (hours > 0) {
+                return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+            return `${minutes}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Example URL for testing
+        window.addEventListener('load', () => {
+            // You can pre-fill with a test URL
+            // videoUrlInput.value = 'https://youtu.be/fNJ4BIFVDas';
+        });
+    </script>
+    <script src="https://blubberlog.com/f3/6a/b1/f36ab10ddc0c1edd32cc0b0a641252ec.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

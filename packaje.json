@@ -1,0 +1,13 @@
+{
+  "name": "vidgrabber-frontend",
+  "version": "1.0.0",
+  "description": "Video downloader frontend",
+  "scripts": {
+    "dev": "live-server public --port=3000 --host=localhost",
+    "build": "echo 'Build process would go here'",
+    "deploy": "echo 'Deployment would go here'"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
